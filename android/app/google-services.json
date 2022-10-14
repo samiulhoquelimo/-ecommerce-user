@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "715691618918",
+    "project_id": "ecommerce-app-6882c",
+    "storage_bucket": "ecommerce-app-6882c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715691618918:android:c7945ce2491e026e20f3a7",
+        "android_client_info": {
+          "package_name": "com.pencilbox.ecommerce_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715691618918-lrt449cba8nakr921k0mjk2l61js9v1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD6X-uiKEa1rm-EGi9hS6_LBJRo1dpll8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715691618918-lrt449cba8nakr921k0mjk2l61js9v1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715691618918:android:c1d7b8f2cf64509f20f3a7",
+        "android_client_info": {
+          "package_name": "com.pencilbox.ecommerce_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715691618918-lrt449cba8nakr921k0mjk2l61js9v1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD6X-uiKEa1rm-EGi9hS6_LBJRo1dpll8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715691618918-lrt449cba8nakr921k0mjk2l61js9v1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
