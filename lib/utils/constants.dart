@@ -13,3 +13,9 @@ abstract class OrderStatus {
 }
 
 enum OrderFilter { TODAY, YESTERDAY, SEVEN_DAYS, THIS_MONTH, ALL_TIME }
+
+Map<String, List<String>> cityArea = {
+  'Dhaka': ['Mirpur', 'Dhanmondi', 'Uttara'],
+  'Rajshahi': ['Mohonpur', 'Paba', 'Bhaga'],
+  'Pabna': ['Sujanogor', 'Bera', 'Ishwardi'],
+};

@@ -7,9 +7,23 @@ class OrderSuccessfulPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Order Successful'),
+      ),
       body: Center(
-        child: Text('Success'),
+        child: Column(
+          children: const [
+            Icon(
+              Icons.done,
+              size: 150,
+            ),
+            Text(
+              'Your order has been placed successfully',
+              style: TextStyle(fontSize: 22),
+            ),
+          ],
+        ),
       ),
     );
   }

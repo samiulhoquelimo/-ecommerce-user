@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_user/auth/auth_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,8 +38,10 @@ class UserProvider extends ChangeNotifier {
     return cityM.area;
   }
 
-  /*Stream<DocumentSnapshot<Map<String, dynamic>>> getUserByUid(String uid) =>
-      DbHelper.getUserByUid(uid);*/
+  Future<UserModel> getUserByUid() async {
+    final snapshot = await DbHelper.getUserOnce(AuthService.user!.uid);
+    return UserModel.fromMap(snapshot.data()!);
+  }
 
   /*Future<void> updateProfile(String uid, Map<String, dynamic> map) =>
       DbHelper.updateProfile(uid, map);*/

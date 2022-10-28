@@ -2,6 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_user/models/cart_model.dart';
 import 'package:ecommerce_user/models/user_model.dart';
 
+import '../models/category_model.dart';
+import '../models/order_model.dart';
+import '../models/product_model.dart';
+
 class DbHelper {
   static const String collectionAdmin = 'Admins';
   static const String collectionCategory = 'Categories';
@@ -88,7 +92,40 @@ class DbHelper {
           .doc(documentOrderConstant)
           .snapshots();
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllOrders() {
-    return _db.collection(collectionOrder).snapshots();
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllOrders(String uid) {
+    return _db
+        .collection(collectionOrder)
+        .where(orderUserIDKey, isEqualTo: uid)
+        .snapshots();
+  }
+
+  static Future<DocumentSnapshot<Map<String, dynamic>>> getUserOnce(
+          String uid) =>
+      _db.collection(collectionUser).doc(uid).get();
+
+  static Future<void> addOrder(
+      OrderModel orderModel, List<CartModel> cartList) async {
+    final wb = _db.batch();
+    final orderDoc = _db.collection(collectionOrder).doc();
+    orderModel.orderId = orderDoc.id;
+    wb.set(orderDoc, orderModel.toMap());
+    final userDoc = _db.collection(collectionUser).doc(orderModel.userId);
+    wb.update(userDoc, {'address': orderModel.deliveryAddress.toMap()});
+    for (var cartM in cartList) {
+      final detailsDoc =
+          orderDoc.collection(collectionOrderDetails).doc(cartM.productId);
+      wb.set(detailsDoc, cartM.toMap());
+      final newStock = cartM.stock - cartM.quantity;
+      final proDoc = _db.collection(collectionProduct).doc(cartM.productId);
+      wb.update(proDoc, {productStock: newStock});
+      final snapshot = await _db
+          .collection(collectionCategory)
+          .where(categoryName, isEqualTo: cartM.category)
+          .get();
+      final catDoc = snapshot.docs.first.reference;
+      final previousCount = snapshot.docs.first.data()[categoryProductCount];
+      wb.update(catDoc, {categoryProductCount: previousCount - cartM.quantity});
+    }
+    return wb.commit();
   }
 }

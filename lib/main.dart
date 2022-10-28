@@ -1,4 +1,6 @@
 import 'package:ecommerce_user/pages/cart_page.dart';
+import 'package:ecommerce_user/pages/checkout_page.dart';
+import 'package:ecommerce_user/pages/order_page.dart';
 import 'package:ecommerce_user/providers/cart_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import 'pages/launcher_page.dart';
 import 'pages/login_page.dart';
+import 'pages/order_successful_page.dart';
 import 'pages/product_details_page.dart';
 import 'pages/product_page.dart';
 import 'pages/user_page.dart';
@@ -56,9 +59,10 @@ class MyApp extends StatelessWidget {
         ProductPage.routeName: (_) => const ProductPage(),
         ProductDetailsPage.routeName: (_) => const ProductDetailsPage(),
         CartPage.routeName: (_) => const CartPage(),
-        //OrderPage.routeName: (_) => OrderPage(),
-        //OrderListPage.routeName: (_) => OrderListPage(),
         UserPage.routeName: (_) => const UserPage(),
+        CheckoutPage.routeName: (_) => const CheckoutPage(),
+        OrderPage.routeName: (_) => const OrderPage(),
+        OrderSuccessfulPage.routeName: (_) => const OrderSuccessfulPage(),
       },
     );
   }
